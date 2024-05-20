@@ -52,7 +52,7 @@
     </nav>
     <!-- akhir nav awal header -->
 
-  <section class="bg-light text-center text-sm-auto d-flex w-auto">
+  <section class="p-5 bg-light text-center text-sm-auto d-flex w-auto">
     <div class="container">
       <div class="d-flex justify-content-center align-items-center" >
         <div>
@@ -70,7 +70,7 @@
    <!-- akhir header  -->
 
 
-    <div class="py-3 container">
+    <div class="py-3 pt-5 container">
       <h1>
         <b>INFORMASI</b>
       </h1>
@@ -310,47 +310,65 @@
         </h1>
       </div>
 
-      <div class="container">
+      <div class="container pt-5">
         <h2><b>CONTACT DETAIL</b></h2>
       </div>
       
-      <div class="container pb-5 ">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">@</span>
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+      <div class="container pb-5 text-secondary">
+        <div class="form-floating mb-3 w-50">
+          <input type="nama" class="form-control" id="floatingInput" placeholder="Nama">
+          <label for="floatingInput">Nama Pembeli</label>
         </div>
-        
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <span class="input-group-text" id="basic-addon2">@example.com</span>
+        <div class="form-floating mb-3 w-50">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Alamat Email</label>
         </div>
-        
-        <div class="mb-3">
-          <label for="basic-url" class="form-label">Your vanity URL</label>
-          <div class="input-group">
-            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+        <div class="form-floating mb-3 w-50">
+          <input type="tinggi" class="form-control" id="floatingInput" placeholder="Tinggi">
+          <label for="floatingInput">Tinggi Pembeli (cm)</label>
+        </div>
+
+        <div class="pt-3">
+          <h2><b>BOOKED DETAIL
+          </b></h2>
+        </div>
+
+        <div class="form-floating w-50">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected>Pilih Hari</option>
+            <option value="1">Senin</option>
+            <option value="2">Selasa</option>
+            <option value="3">Rabu</option>
+            <option value="3">Kamis</option>
+            <option value="3">Jumat</option>
+            <option value="3">Sabtu</option>
+            <option value="3">Minggu</option>
+          </select>
+          <label for="floatingSelect">Works with selects</label>
+
+          <div class="row g-2 pt-3">
+            <div class="col-md">
+              <div class="form-floating mb-3">
+                <input type="Jam" class="form-control" id="floatingInput" placeholder="Jam">
+                <label for="floatingInput">Input Jam (contoh:1)</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating mb-3">
+                <input type="Menit" class="form-control" id="floatingInput" placeholder="Menit">
+                <label for="floatingInput">Input Menit (contoh: 10)</label>
+              </div>
+            </div>
           </div>
-          <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+
+          <div class="form-floating mb-3">
+            <input type="Budget" class="form-control" id="floatingInput" placeholder="Budget">
+            <label for="floatingInput">Masukkan budget pembeli (Rp)</label>
+          </div>
         </div>
+
         
-        <div class="input-group mb-3">
-          <span class="input-group-text">$</span>
-          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-          <span class="input-group-text">.00</span>
-        </div>
-        
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-          <span class="input-group-text">@</span>
-          <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-        </div>
-        
-        <div class="input-group">
-          <span class="input-group-text">With textarea</span>
-          <textarea class="form-control" aria-label="With textarea"></textarea>
-        </div>
-      </div>
+      
     </section>
 
 
