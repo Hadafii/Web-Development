@@ -15,6 +15,7 @@
   <body style="font-family: source sans 3;">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="JS/script.js"></script>
 
 <!-- bagian navbar  -->
     <nav class="py-0 navbar navbar-expand-lg navbar-dark" style="background-color: #8A19D6; font-family: Inter;">
@@ -310,67 +311,129 @@
         </h1>
       </div>
 
-      <div class="container pt-5">
+      <!-- buat pc  -->
+      <form id="contact-form">
+        <div class="container pt-5 d-none d-lg-block">
+            <h2><b>CONTACT DETAIL</b></h2>
+            <div class="text-secondary">
+                <div class="form-floating mb-3 w-50">
+                    <input type="text" class="form-control" id="nama" placeholder="Nama">
+                    <label for="nama">Nama Pembeli</label>
+                </div>
+                <div class="form-floating mb-3 w-50">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <label for="email">Alamat Email</label>
+                </div>
+                <div id="email-error" class="invalid-feedback" style="display: none;">
+                  Please provide an email.
+              </div>
+                <div class="form-floating mb-3 w-50">
+                    <input type="number" class="form-control" id="tinggi" placeholder="Tinggi">
+                    <label for="tinggi">Tinggi Pembeli (cm)</label>
+                </div>
+                <div class="pt-3">
+                    <h2><b>BOOKED DETAIL</b></h2>
+                </div>
+                <div class="form-floating w-50">
+                    <select class="form-select" id="hari" aria-label="Floating label select example">
+                        <option selected>Pilih Hari</option>
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                        <option value="Minggu">Minggu</option>
+                    </select>
+                    <label for="hari">Works with selects</label>
+                    <div class="row g-2 pt-3">
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="jam" placeholder="Jam">
+                                <label for="jam">Input Jam (contoh: 1)</label>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="menit" placeholder="Menit">
+                                <label for="menit">Input Menit (contoh: 10)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="budget" placeholder="Budget">
+                        <label for="budget">Masukkan budget pembeli (Rp)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 w-50">
+                <button class="btn btn-lg btn-primary" type="button" onclick="processForm()">Lihat Kombinasi terbaik!</button>
+            </div>
+        </div>
+    </form>
+    <div id="results"></div>
+      
+      <!-- buat hp  -->
+      <div class="container pt-5 d-block d-lg-none ">
         <h2><b>CONTACT DETAIL</b></h2>
-      </div>
-      
-      <div class="container pb-5 text-secondary">
-        <div class="form-floating mb-3 w-50">
-          <input type="nama" class="form-control" id="floatingInput" placeholder="Nama">
-          <label for="floatingInput">Nama Pembeli</label>
-        </div>
-        <div class="form-floating mb-3 w-50">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Alamat Email</label>
-        </div>
-        <div class="form-floating mb-3 w-50">
-          <input type="tinggi" class="form-control" id="floatingInput" placeholder="Tinggi">
-          <label for="floatingInput">Tinggi Pembeli (cm)</label>
-        </div>
-
-        <div class="pt-3">
-          <h2><b>BOOKED DETAIL
-          </b></h2>
-        </div>
-
-        <div class="form-floating w-50">
-          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option selected>Pilih Hari</option>
-            <option value="1">Senin</option>
-            <option value="2">Selasa</option>
-            <option value="3">Rabu</option>
-            <option value="3">Kamis</option>
-            <option value="3">Jumat</option>
-            <option value="3">Sabtu</option>
-            <option value="3">Minggu</option>
-          </select>
-          <label for="floatingSelect">Works with selects</label>
-
-          <div class="row g-2 pt-3">
-            <div class="col-md">
-              <div class="form-floating mb-3">
-                <input type="Jam" class="form-control" id="floatingInput" placeholder="Jam">
-                <label for="floatingInput">Input Jam (contoh:1)</label>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="form-floating mb-3">
-                <input type="Menit" class="form-control" id="floatingInput" placeholder="Menit">
-                <label for="floatingInput">Input Menit (contoh: 10)</label>
-              </div>
-            </div>
-          </div>
-
+        <div class="text-secondary ">
           <div class="form-floating mb-3">
-            <input type="Budget" class="form-control" id="floatingInput" placeholder="Budget">
-            <label for="floatingInput">Masukkan budget pembeli (Rp)</label>
+            <input type="nama" class="form-control" id="floatingInput" placeholder="Nama">
+            <label for="floatingInput">Nama Pembeli</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Alamat Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="tinggi" class="form-control" id="floatingInput" placeholder="Tinggi">
+            <label for="floatingInput">Tinggi Pembeli (cm)</label>
+          </div>
+  
+          <div class="pt-3">
+            <h2><b>BOOKED DETAIL
+            </b></h2>
+          </div>
+  
+          <div class="form-floating">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+              <option selected>Pilih Hari</option>
+              <option value="1">Senin</option>
+              <option value="2">Selasa</option>
+              <option value="3">Rabu</option>
+              <option value="3">Kamis</option>
+              <option value="3">Jumat</option>
+              <option value="3">Sabtu</option>
+              <option value="3">Minggu</option>
+            </select>
+            <label for="floatingSelect">Works with selects</label>
+  
+            <div class="row g-2 pt-3">
+              <div class="col-md">
+                <div class="form-floating mb-3">
+                  <input type="Jam" class="form-control" id="floatingInput" placeholder="Jam">
+                  <label for="floatingInput">Input Jam (contoh:1)</label>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-floating mb-3">
+                  <input type="Menit" class="form-control" id="floatingInput" placeholder="Menit">
+                  <label for="floatingInput">Input Menit (contoh: 10)</label>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <input type="Budget" class="form-control" id="floatingInput" placeholder="Budget">
+              <label for="floatingInput">Masukkan budget pembeli (Rp)</label>
+            </div>
           </div>
         </div>
-
-        
-      
+      </div>
     </section>
 
+
+    
 
   </body>
 </html>
