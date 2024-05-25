@@ -36,7 +36,7 @@ const dataset = [
     {"Wahana 33": "Ande-Ande Lumut", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 32, "tinggi minimum": 80},
 ];
 
-function processForm() {
+function processFormPC() {
     const nama = document.getElementById('nama').value;
     const email = document.getElementById('email').value;
     const tinggi = parseInt(document.getElementById('tinggi').value);
@@ -118,6 +118,159 @@ function processForm() {
     }else{
         document.getElementById('budget-error').style.display = 'none';
         document.getElementById('budget').classList.remove('is-invalid');
+    }
+
+
+
+    if (!isValid) {
+        return;
+    }
+
+    const total_minutes = jam * 60 + menit;
+    const is_weekend = (hari === "Sabtu" || hari === "Minggu");
+    
+    let filteredDataset = dataset.filter(item => tinggi >= item.tinggi_minimum);
+    
+    let best_combination = [];
+    let max_ride_time = 0;
+    let total_ride_cost = 0;
+    let all_combinations = [];
+    
+    function findCombinations(current_combination, current_index, current_cost, current_time) {
+        if (current_cost > budget || current_time > total_minutes) {
+            return;
+        }
+        if (current_time > max_ride_time) {
+            max_ride_time = current_time;
+            best_combination = [...current_combination];
+            total_minutes = current_cost;
+        }
+        
+        all_combinations.push([...current_combination]);
+
+        for (let i = current_index; i < filteredDataset.length; i++) {
+            let ride = filteredDataset[i];
+            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
+            findCombinations([...current_combination, ride], i + 1, current_cost + ride_cost, current_time + ride.waktu_bermain);
+        }
+    }
+
+    findCombinations([], 0, 0, 0);
+    
+    let resultHTML = `<h3>Algoritma BruteForce<br> Best Ride Combination for ${nama}</h3>`;
+    resultHTML += "<ul>";
+    best_combination.forEach(ride => {
+        resultHTML += `<li>${ride.Wahana} - ${is_weekend ? ride.harga_weekend : ride.harga_weekday} Rp - ${ride.waktu_bermain} minutes</li>`;
+    });
+    resultHTML += "</ul>";
+    resultHTML += `<p>Total Ride Time: ${max_ride_time} minutes</p>`;
+    resultHTML += `<p>Total Ride Cost: Rp ${total_ride_cost} </p>`;
+
+    resultHTML = `<h3>Algoritma BruteForce<br>All Combination for ${nama}</h3>`;
+    resultHTML += "<ul>";
+    all_combinations.forEach(combination => {
+        let combination_cost = 0;
+        let combination_time = 0;
+        resultHTML += "<li><ul>";
+        combination.forEach(ride => {
+            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
+            resultHTML += `<li>${ride.Wahana} - ${ride_cost} Rp - ${ride.waktu_bermain} minutes</li>`;
+            combination_cost += ride_cost;
+            combination_time += ride.waktu_bermain;
+        });
+        resultHTML += `</ul><p>Total Ride Time: ${combination_time} minutes</p>`;
+        resultHTML += `<p>Total Ride Cost: Rp ${combination_cost} </p></li>`;
+    });
+    resultHTML += "</ul>";
+    
+    
+    document.getElementById('results').innerHTML = resultHTML;
+
+
+}
+
+function processFormHP() {
+    const nama = document.getElementById('nama-hp').value;
+    const email = document.getElementById('email-hp').value;
+    const tinggi = parseInt(document.getElementById('tinggi-hp').value);
+    const hari = document.getElementById('hari-hp').value;
+    const jam = parseInt(document.getElementById('jam-hp').value);
+    const menit = parseInt(document.getElementById('menit-hp').value);
+    const budget = parseInt(document.getElementById('budget-hp').value);
+
+    let isValid = true;
+
+    if (!nama) {
+        document.getElementById('nama-error-hp').style.display = 'block';
+        document.getElementById('nama-hp').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('nama-error-hp').style.display = 'none';
+        document.getElementById('nama-hp').classList.remove('is-invalid');
+    }
+
+    if (!email) {
+        document.getElementById('email-error-hp').style.display = 'block';
+        document.getElementById('email-hp').classList.add('is-invalid');
+        isValid = false;
+    } else {
+        document.getElementById('email-error-hp').style.display = 'none';
+        document.getElementById('email-hp').classList.remove('is-invalid');
+    }
+
+    if (isNaN(tinggi)) {
+        document.getElementById('tinggi-error-hp').style.display = 'block';
+        document.getElementById('tinggi-hp').classList.add('is-invalid');
+        isValid = false;
+    }else if(tinggi < 80){
+        document.getElementById('tinggi-error-hp').style.display = 'none';
+        document.getElementById('tinggi-hp').classList.remove('is-invalid');
+    }
+
+    if (hari === 'Pilih Hari') {
+        document.getElementById('hari-error-hp').style.display = 'block';
+        document.getElementById('hari-hp').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('hari-error-hp').style.display = 'none';
+        document.getElementById('hari-hp').classList.remove('is-invalid');
+    }
+
+    if (isNaN(jam)) {
+        document.getElementById('jam-error-invalid-hp').style.display = 'block';
+        document.getElementById('jam-hp').classList.add('is-invalid');
+        isValid = false;
+    }else if (jam > 24){
+        document.getElementById('jam-error-kelebihan-hp').style.display = 'block';
+        document.getElementById('jam-hp').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('jam-error-invalid-hp').style.display = 'none';
+        document.getElementById('jam-error-kelebihan-hp').style.display = 'none';
+        document.getElementById('jam-hp').classList.remove('is-invalid');
+    }
+
+    if (isNaN(menit)) {
+        document.getElementById('menit-error-invalid-hp').style.display = 'block';
+        document.getElementById('menit-hp').classList.add('is-invalid');
+        isValid = false;
+    }else if (menit > 24){
+        document.getElementById('menit-error-kelebihan-hp').style.display = 'block';
+        document.getElementById('menit-hp').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('menit-error-invalid-hp').style.display = 'none';
+        document.getElementById('menit-error-kelebihan-hp').style.display = 'none';
+        document.getElementById('menit-hp').classList.remove('is-invalid');
+    }
+
+    if (isNaN(budget) || budget < 0) {
+        document.getElementById('budget-error-hp').style.display = 'block';
+        document.getElementById('budget-hp').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('budget-error-hp').style.display = 'none';
+        document.getElementById('budget-hp').classList.remove('is-invalid');
     }
 
 
