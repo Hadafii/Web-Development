@@ -39,8 +39,12 @@ function processForm() {
     let isValid = true;
 
     if (!nama) {
-        alert("Please provide your name.");
+        document.getElementById('nama-error').style.display = 'block';
+        document.getElementById('nama').classList.add('is-invalid');
         isValid = false;
+    }else{
+        document.getElementById('nama-error').style.display = 'none';
+        document.getElementById('nama').classList.remove('is-invalid');
     }
 
     if (!email) {
@@ -53,28 +57,58 @@ function processForm() {
     }
 
     if (isNaN(tinggi)) {
-        alert("Please provide your height.");
+        document.getElementById('tinggi-error').style.display = 'block';
+        document.getElementById('tinggi').classList.add('is-invalid');
         isValid = false;
+    }else if(tinggi < 150){
+        document.getElementById('tinggi-error').style.display = 'none';
+        document.getElementById('tinggi').classList.remove('is-invalid');
     }
 
     if (hari === 'Pilih Hari') {
-        alert("Please select a day.");
+        document.getElementById('hari-error').style.display = 'block';
+        document.getElementById('hari').classList.add('is-invalid');
         isValid = false;
+    }else{
+        document.getElementById('hari-error').style.display = 'none';
+        document.getElementById('hari').classList.remove('is-invalid');
     }
 
     if (isNaN(jam)) {
-        alert("Please provide the hours.");
+        document.getElementById('jam-error-invalid').style.display = 'block';
+        document.getElementById('jam').classList.add('is-invalid');
         isValid = false;
+    }else if (jam > 24){
+        document.getElementById('jam-error-kelebihan').style.display = 'block';
+        document.getElementById('jam').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('jam-error-invalid').style.display = 'none';
+        document.getElementById('jam-error-kelebihan').style.display = 'none';
+        document.getElementById('jam').classList.remove('is-invalid');
     }
 
     if (isNaN(menit)) {
-        alert("Please provide the minutes.");
+        document.getElementById('menit-error-invalid').style.display = 'block';
+        document.getElementById('menit').classList.add('is-invalid');
         isValid = false;
+    }else if (menit > 24){
+        document.getElementById('menit-error-kelebihan').style.display = 'block';
+        document.getElementById('menit').classList.add('is-invalid');
+        isValid = false;
+    }else{
+        document.getElementById('menit-error-invalid').style.display = 'none';
+        document.getElementById('menit-error-kelebihan').style.display = 'none';
+        document.getElementById('menit').classList.remove('is-invalid');
     }
 
-    if (isNaN(budget)) {
-        alert("Please provide your budget.");
+    if (isNaN(budget) || budget < 0) {
+        document.getElementById('budget-error').style.display = 'block';
+        document.getElementById('budget').classList.add('is-invalid');
         isValid = false;
+    }else{
+        document.getElementById('budget-error').style.display = 'none';
+        document.getElementById('budget').classList.remove('is-invalid');
     }
 
     if (!isValid) {
@@ -88,6 +122,8 @@ function processForm() {
     
     let best_combination = [];
     let max_ride_time = 0;
+    let total_ride_cost = 0;
+    let all_combinations = [];
     
     function findCombinations(current_combination, current_index, current_cost, current_time) {
         if (current_cost > budget || current_time > total_minutes) {
@@ -96,8 +132,11 @@ function processForm() {
         if (current_time > max_ride_time) {
             max_ride_time = current_time;
             best_combination = [...current_combination];
+            total_minutes = current_cost;
         }
         
+        all_combinations.push([...current_combination]);
+
         for (let i = current_index; i < filteredDataset.length; i++) {
             let ride = filteredDataset[i];
             let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
@@ -107,13 +146,32 @@ function processForm() {
 
     findCombinations([], 0, 0, 0);
     
-    let resultHTML = `<h3>Best Ride Combination for ${nama}</h3>`;
+    let resultHTML = `<h3>Algoritma BruteForce<br> Best Ride Combination for ${nama}</h3>`;
     resultHTML += "<ul>";
     best_combination.forEach(ride => {
         resultHTML += `<li>${ride.Wahana} - ${is_weekend ? ride.harga_weekend : ride.harga_weekday} Rp - ${ride.waktu_bermain} minutes</li>`;
     });
     resultHTML += "</ul>";
     resultHTML += `<p>Total Ride Time: ${max_ride_time} minutes</p>`;
+    resultHTML += `<p>Total Ride Cost: Rp ${total_ride_cost} </p>`;
 
+    resultHTML = `<h3>Algoritma BruteForce<br>All Combination for ${nama}</h3>`;
+    resultHTML += "<ul>";
+    all_combinations.forEach(combination => {
+        let combination_cost = 0;
+        let combination_time = 0;
+        resultHTML += "<li><ul>";
+        combination.forEach(ride => {
+            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
+            resultHTML += `<li>${ride.Wahana} - ${ride_cost} Rp - ${ride.waktu_bermain} minutes</li>`;
+            combination_cost += ride_cost;
+            combination_time += ride.waktu_bermain;
+        });
+        resultHTML += `</ul><p>Total Ride Time: ${combination_time} minutes</p>`;
+        resultHTML += `<p>Total Ride Cost: Rp ${combination_cost} </p></li>`;
+    });
+    resultHTML += "</ul>";
+    
+    
     document.getElementById('results').innerHTML = resultHTML;
 }
