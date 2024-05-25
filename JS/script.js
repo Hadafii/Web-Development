@@ -1,30 +1,39 @@
 // script.js
 
 const dataset = [
-    { "Wahana": "Convoy Boat", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 21, "tinggi_minimum": 100 },
-    { "Wahana": "Sepeda Gantung", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 36, "tinggi_minimum": 100 },
-    { "Wahana": "Midi Skater", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 30, "tinggi_minimum": 100 },
-    { "Wahana": "Tour Bus", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 40, "tinggi_minimum": 80 },
-    { "Wahana": "Ular Coaster", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 5, "tinggi_minimum": 120 },
-    { "Wahana": "Mini Swinger", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 15, "tinggi_minimum": 100 },
-    { "Wahana": "Happy Boat", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 25, "tinggi_minimum": 80 },
-    { "Wahana": "Convoy Car", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 28, "tinggi_minimum": 80 },
-    { "Wahana": "Komidi Putar", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 24, "tinggi_minimum": 80 },
-    { "Wahana": "Froggy", "harga_weekday": 10000, "harga_weekend": 15000, "waktu_bermain": 23, "tinggi_minimum": 80 },
-    { "Wahana": "Happy Sky", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 26, "tinggi_minimum": 100 },
-    { "Wahana": "Trampolin", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 31, "tinggi_minimum": 100 },
-    { "Wahana": "Water Ball", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 12, "tinggi_minimum": 80 },
-    { "Wahana": "Kangaroo Jump", "harga_weekday": 10000, "harga_weekend": 15000, "waktu_bermain": 10, "tinggi_minimum": 120 },
-    { "Wahana": "Sky Ride", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 33, "tinggi_minimum": 120 },
-    { "Wahana": "360 Pendulum", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 11, "tinggi_minimum": 135 },
-    { "Wahana": "Star Chase", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 16, "tinggi_minimum": 100 },
-    { "Wahana": "Gokart", "harga_weekday": 35000, "harga_weekend": 40000, "waktu_bermain": 35, "tinggi_minimum": 100 },
-    { "Wahana": "Samba Baloon", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 17, "tinggi_minimum": 100 },
-    { "Wahana": "Rumah Hantu", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 34, "tinggi_minimum": 100 },
-    { "Wahana": "Sky Coopter", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 29, "tinggi_minimum": 120 },
-    { "Wahana": "Kids Plane", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 14, "tinggi_minimum": 80 },
-    { "Wahana": "Flying Tiger", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 22, "tinggi_minimum": 120 },
-    { "Wahana": "Bumper Car", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 29, "tinggi_minimum": 120 }
+    {"Wahana 1": "Convoy Boat",  "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 21, "tinggi minimum": 100},
+    {"Wahana 2": "Sepeda Gantung",  "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 36, "tinggi minimum": 100},
+    {"Wahana 3": "Midi Skater", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 30, "tinggi minimum": 100},
+    {"Wahana 4": "Tour Bus", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 40, "tinggi minimum": 80},
+    {"Wahana 5": "Ular Coaster", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 5, "tinggi minimum": 120},
+    {"Wahana 6": "Mini Swinger", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 15, "tinggi minimum": 100},
+    {"Wahana 7": "Happy Boat", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 25, "tinggi minimum": 80},
+    {"Wahana 8": "Convoy Car", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 28, "tinggi minimum": 80},
+    {"Wahana 9": "Komidi Putar", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 24, "tinggi minimum": 80},
+    {"Wahana 10": "Froggy", "harga weekday": 10000, "harga weekend": 15000, "waktu bermain": 23, "tinggi minimum": 80},
+    {"Wahana 11": "Happy Sky", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 26, "tinggi minimum": 100},
+    {"Wahana 12": "Trampolin", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 31, "tinggi minimum": 100},
+    {"Wahana 13": "Water Ball", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 12, "tinggi minimum": 80},
+    {"Wahana 14": "Kangaroo Jump", "harga weekday": 10000, "harga weekend": 15000, "waktu bermain": 10, "tinggi minimum": 120},
+    {"Wahana 15": "Sky Ride", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 33, "tinggi minimum": 120},
+    {"Wahana 16": "360 Pendulum", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 11, "tinggi minimum": 135},
+    {"Wahana 17": "Star Chase", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 16, "tinggi minimum": 100},
+    {"Wahana 18": "Gokart", "harga weekday": 35000, "harga weekend": 40000, "waktu bermain": 35, "tinggi minimum": 100},
+    {"Wahana 19": "Samba Baloon", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 17, "tinggi minimum": 100},
+    {"Wahana 20": "Rumah Hantu", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 34, "tinggi minimum": 100},
+    {"Wahana 21": "Sky Coopter", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 29, "tinggi minimum": 120},
+    {"Wahana 22": "Kids Plane", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 14, "tinggi minimum": 80},
+    {"Wahana 23": "Flying Tiger", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 22, "tinggi minimum": 120},
+    {"Wahana 24": "Bumper Car", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 29, "tinggi minimum": 100},
+    {"Wahana 25": "Flying Tornado", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 18, "tinggi minimum": 135},
+    {"Wahana 26": "Gold Mining Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 7, "tinggi minimum": 120},
+    {"Wahana 27": "Demolition Derby", "harga weekday": 35000, "harga weekend": 40000, "waktu bermain": 20, "tinggi minimum": 100},
+    {"Wahana 28": "Dragon Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 6, "tinggi minimum": 120},
+    {"Wahana 29": "Flying Fox", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 27, "tinggi minimum": 80},
+    {"Wahana 30": "Sky Swinger", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 13, "tinggi minimum": 100},
+    {"Wahana 31": "Gatot Kaca Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 8, "tinggi minimum": 120},
+    {"Wahana 32": "Himalaya Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 9, "tinggi minimum": 135},
+    {"Wahana 33": "Ande-Ande Lumut", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 32, "tinggi minimum": 80},
 ];
 
 function processForm() {
@@ -60,7 +69,7 @@ function processForm() {
         document.getElementById('tinggi-error').style.display = 'block';
         document.getElementById('tinggi').classList.add('is-invalid');
         isValid = false;
-    }else if(tinggi < 150){
+    }else if(tinggi < 80){
         document.getElementById('tinggi-error').style.display = 'none';
         document.getElementById('tinggi').classList.remove('is-invalid');
     }
@@ -110,6 +119,8 @@ function processForm() {
         document.getElementById('budget-error').style.display = 'none';
         document.getElementById('budget').classList.remove('is-invalid');
     }
+
+
 
     if (!isValid) {
         return;
@@ -174,4 +185,6 @@ function processForm() {
     
     
     document.getElementById('results').innerHTML = resultHTML;
+
+
 }
