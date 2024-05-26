@@ -1,42 +1,42 @@
 // script.js
 
 const dataset = [
-    {"Wahana 1": "Convoy Boat",  "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 21, "tinggi minimum": 100},
-    {"Wahana 2": "Sepeda Gantung",  "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 36, "tinggi minimum": 100},
-    {"Wahana 3": "Midi Skater", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 30, "tinggi minimum": 100},
-    {"Wahana 4": "Tour Bus", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 40, "tinggi minimum": 80},
-    {"Wahana 5": "Ular Coaster", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 5, "tinggi minimum": 120},
-    {"Wahana 6": "Mini Swinger", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 15, "tinggi minimum": 100},
-    {"Wahana 7": "Happy Boat", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 25, "tinggi minimum": 80},
-    {"Wahana 8": "Convoy Car", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 28, "tinggi minimum": 80},
-    {"Wahana 9": "Komidi Putar", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 24, "tinggi minimum": 80},
-    {"Wahana 10": "Froggy", "harga weekday": 10000, "harga weekend": 15000, "waktu bermain": 23, "tinggi minimum": 80},
-    {"Wahana 11": "Happy Sky", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 26, "tinggi minimum": 100},
-    {"Wahana 12": "Trampolin", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 31, "tinggi minimum": 100},
-    {"Wahana 13": "Water Ball", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 12, "tinggi minimum": 80},
-    {"Wahana 14": "Kangaroo Jump", "harga weekday": 10000, "harga weekend": 15000, "waktu bermain": 10, "tinggi minimum": 120},
-    {"Wahana 15": "Sky Ride", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 33, "tinggi minimum": 120},
-    {"Wahana 16": "360 Pendulum", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 11, "tinggi minimum": 135},
-    {"Wahana 17": "Star Chase", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 16, "tinggi minimum": 100},
-    {"Wahana 18": "Gokart", "harga weekday": 35000, "harga weekend": 40000, "waktu bermain": 35, "tinggi minimum": 100},
-    {"Wahana 19": "Samba Baloon", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 17, "tinggi minimum": 100},
-    {"Wahana 20": "Rumah Hantu", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 34, "tinggi minimum": 100},
-    {"Wahana 21": "Sky Coopter", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 29, "tinggi minimum": 120},
-    {"Wahana 22": "Kids Plane", "harga weekday": 15000, "harga weekend": 20000, "waktu bermain": 14, "tinggi minimum": 80},
-    {"Wahana 23": "Flying Tiger", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 22, "tinggi minimum": 120},
-    {"Wahana 24": "Bumper Car", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 29, "tinggi minimum": 100},
-    {"Wahana 25": "Flying Tornado", "harga weekday": 25000, "harga weekend": 30000, "waktu bermain": 18, "tinggi minimum": 135},
-    {"Wahana 26": "Gold Mining Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 7, "tinggi minimum": 120},
-    {"Wahana 27": "Demolition Derby", "harga weekday": 35000, "harga weekend": 40000, "waktu bermain": 20, "tinggi minimum": 100},
-    {"Wahana 28": "Dragon Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 6, "tinggi minimum": 120},
-    {"Wahana 29": "Flying Fox", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 27, "tinggi minimum": 80},
-    {"Wahana 30": "Sky Swinger", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 13, "tinggi minimum": 100},
-    {"Wahana 31": "Gatot Kaca Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 8, "tinggi minimum": 120},
-    {"Wahana 32": "Himalaya Coaster", "harga weekday": 30000, "harga weekend": 35000, "waktu bermain": 9, "tinggi minimum": 135},
-    {"Wahana 33": "Ande-Ande Lumut", "harga weekday": 20000, "harga weekend": 25000, "waktu bermain": 32, "tinggi minimum": 80},
+    {"Wahana": "Convoy Boat",  "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 21, "tinggi_minimum": 100},
+    {"Wahana": "Sepeda Gantung",  "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 36, "tinggi_minimum": 100},
+    {"Wahana": "Midi Skater", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 30, "tinggi_minimum": 100},
+    {"Wahana": "Tour Bus", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 40, "tinggi_minimum": 80},
+    {"Wahana": "Ular Coaster", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 5, "tinggi_minimum": 120},
+    {"Wahana": "Mini Swinger", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 15, "tinggi_minimum": 100},
+    {"Wahana": "Happy Boat", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 25, "tinggi_minimum": 80},
+    {"Wahana": "Convoy Car", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 28, "tinggi_minimum": 80},
+    {"Wahana": "Komidi Putar", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 24, "tinggi_minimum": 80},
+    {"Wahana": "Froggy", "harga_weekday": 10000, "harga_weekend": 15000, "waktu_bermain": 23, "tinggi_minimum": 80},
+    {"Wahana": "Happy Sky", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 26, "tinggi_minimum": 100},
+    {"Wahana": "Trampolin", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 31, "tinggi_minimum": 100},
+    {"Wahana": "Water Ball", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 12, "tinggi_minimum": 80},
+    {"Wahana": "Kangaroo Jump", "harga_weekday": 10000, "harga_weekend": 15000, "waktu_bermain": 10, "tinggi_minimum": 120},
+    {"Wahana": "Sky Ride", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 33, "tinggi_minimum": 120},
+    {"Wahana": "360 Pendulum", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 11, "tinggi_minimum": 135},
+    {"Wahana": "Star Chase", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 16, "tinggi_minimum": 100},
+    {"Wahana": "Gokart", "harga_weekday": 35000, "harga_weekend": 40000, "waktu_bermain": 35, "tinggi_minimum": 100},
+    {"Wahana": "Samba Baloon", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 17, "tinggi_minimum": 100},
+    {"Wahana": "Rumah Hantu", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 34, "tinggi_minimum": 100},
+    {"Wahana": "Sky Coopter", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 29, "tinggi_minimum": 120},
+    {"Wahana": "Kids Plane", "harga_weekday": 15000, "harga_weekend": 20000, "waktu_bermain": 14, "tinggi_minimum": 80},
+    {"Wahana": "Flying Tiger", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 22, "tinggi_minimum": 120},
+    {"Wahana": "Bumper Car", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 29, "tinggi_minimum": 100},
+    {"Wahana": "Flying Tornado", "harga_weekday": 25000, "harga_weekend": 30000, "waktu_bermain": 18, "tinggi_minimum": 135},
+    {"Wahana": "Gold Mining Coaster", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 7, "tinggi_minimum": 120},
+    {"Wahana": "Demolition Derby", "harga_weekday": 35000, "harga_weekend": 40000, "waktu_bermain": 20, "tinggi_minimum": 100},
+    {"Wahana": "Dragon Coaster", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 6, "tinggi_minimum": 120},
+    {"Wahana": "Flying Fox", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 27, "tinggi_minimum": 80},
+    {"Wahana": "Sky Swinger", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 13, "tinggi_minimum": 100},
+    {"Wahana": "Gatot Kaca Coaster", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 8, "tinggi_minimum": 120},
+    {"Wahana": "Himalaya Coaster", "harga_weekday": 30000, "harga_weekend": 35000, "waktu_bermain": 9, "tinggi_minimum": 135},
+    {"Wahana": "Ande-Ande Lumut", "harga_weekday": 20000, "harga_weekend": 25000, "waktu_bermain": 32, "tinggi_minimum": 80},
 ];
 
-function processFormPC() {
+function getInputData() {
     const nama = document.getElementById('nama').value;
     const email = document.getElementById('email').value;
     const tinggi = parseInt(document.getElementById('tinggi').value);
@@ -44,6 +44,11 @@ function processFormPC() {
     const jam = parseInt(document.getElementById('jam').value);
     const menit = parseInt(document.getElementById('menit').value);
     const budget = parseInt(document.getElementById('budget').value);
+
+    return { nama, email, tinggi, hari, jam, menit, budget };
+}
+
+function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
 
     let isValid = true;
 
@@ -65,15 +70,15 @@ function processFormPC() {
         document.getElementById('email').classList.remove('is-invalid');
     }
 
-    if (isNaN(tinggi)) {
+    if (isNaN(tinggi) || tinggi < 80) {
         document.getElementById('tinggi-error').style.display = 'block';
         document.getElementById('tinggi').classList.add('is-invalid');
         isValid = false;
-    }else if(tinggi < 80){
+    }else {
         document.getElementById('tinggi-error').style.display = 'none';
         document.getElementById('tinggi').classList.remove('is-invalid');
     }
-
+    
     if (hari === 'Pilih Hari') {
         document.getElementById('hari-error').style.display = 'block';
         document.getElementById('hari').classList.add('is-invalid');
@@ -101,7 +106,7 @@ function processFormPC() {
         document.getElementById('menit-error-invalid').style.display = 'block';
         document.getElementById('menit').classList.add('is-invalid');
         isValid = false;
-    }else if (menit > 24){
+    }else if (menit > 59){
         document.getElementById('menit-error-kelebihan').style.display = 'block';
         document.getElementById('menit').classList.add('is-invalid');
         isValid = false;
@@ -120,224 +125,288 @@ function processFormPC() {
         document.getElementById('budget').classList.remove('is-invalid');
     }
 
+    return isValid;
+}
 
 
-    if (!isValid) {
+//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button
+
+function BestBruteForce() {
+    const {nama, email, tinggi, hari, jam, menit, budget} = getInputData();
+
+    if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
         return;
     }
 
-    const total_minutes = jam * 60 + menit;
-    const is_weekend = (hari === "Sabtu" || hari === "Minggu");
-    
-    let filteredDataset = dataset.filter(item => tinggi >= item.tinggi_minimum);
-    
-    let best_combination = [];
-    let max_ride_time = 0;
-    let total_ride_cost = 0;
-    let all_combinations = [];
-    
-    function findCombinations(current_combination, current_index, current_cost, current_time) {
-        if (current_cost > budget || current_time > total_minutes) {
+    const totalWaktuBermain = jam * 60 + menit;
+
+    const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
+
+    let bestCombination = null;
+    let maxWahana = 0;
+
+    function findBestCombination(index, currentBudget, currentWahana, currentWaktuBermain, currentCombination) {
+        if (currentBudget < 0 || currentWaktuBermain > totalWaktuBermain) {
             return;
         }
-        if (current_time > max_ride_time) {
-            max_ride_time = current_time;
-            best_combination = [...current_combination];
-            total_minutes = current_cost;
+        if (currentWahana > maxWahana) {
+            maxWahana = currentWahana;
+            bestCombination = currentCombination.slice();
         }
-        
-        all_combinations.push([...current_combination]);
-
-        for (let i = current_index; i < filteredDataset.length; i++) {
-            let ride = filteredDataset[i];
-            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
-            findCombinations([...current_combination, ride], i + 1, current_cost + ride_cost, current_time + ride.waktu_bermain);
+        if (index >= dataset.length) {
+            return;
         }
+        const item = dataset[index];
+        const harga = isWeekend ? item.harga_weekend : item.harga_weekday;
+        if (tinggi >= item.tinggi_minimum) {
+            findBestCombination(
+                index + 1,
+                currentBudget - harga,
+                currentWahana + 1,
+                currentWaktuBermain + item.waktu_bermain,
+                [...currentCombination, item]
+            );
+        }
+        findBestCombination(index + 1, currentBudget, currentWahana, currentWaktuBermain, currentCombination);
     }
 
-    findCombinations([], 0, 0, 0);
-    
-    let resultHTML = `<h3>Algoritma BruteForce<br> Best Ride Combination for ${nama}</h3>`;
-    resultHTML += "<ul>";
-    best_combination.forEach(ride => {
-        resultHTML += `<li>${ride.Wahana} - ${is_weekend ? ride.harga_weekend : ride.harga_weekday} Rp - ${ride.waktu_bermain} minutes</li>`;
-    });
-    resultHTML += "</ul>";
-    resultHTML += `<p>Total Ride Time: ${max_ride_time} minutes</p>`;
-    resultHTML += `<p>Total Ride Cost: Rp ${total_ride_cost} </p>`;
+    findBestCombination(0, budget, 0, 0, []);
 
-    resultHTML = `<h3>Algoritma BruteForce<br>All Combination for ${nama}</h3>`;
-    resultHTML += "<ul>";
-    all_combinations.forEach(combination => {
-        let combination_cost = 0;
-        let combination_time = 0;
-        resultHTML += "<li><ul>";
-        combination.forEach(ride => {
-            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
-            resultHTML += `<li>${ride.Wahana} - ${ride_cost} Rp - ${ride.waktu_bermain} minutes</li>`;
-            combination_cost += ride_cost;
-            combination_time += ride.waktu_bermain;
+    // Menampilkan hasil terbaik
+    const bestResultContainer = document.getElementById('best-result-pc');
+    bestResultContainer.innerHTML = '';
+
+    if (bestCombination) {
+        document.getElementById('bruteFoce').classList.remove('invisible');
+        document.getElementById('best-result-pc').classList.add('text-center');
+
+        const table = document.createElement('table');
+        table.classList.add('table');
+    
+        const thead = document.createElement('thead');
+        thead.classList.add('table-light');
+    
+        const tbody = document.createElement('tbody');
+    
+        const tfoot = document.createElement('tfoot');
+    
+        // Header table
+        const headerRow = document.createElement('tr');
+        const headers = ['NO','Nama Wahana', 'Harga', 'Waktu Bermain', 'Tinggi Minimum'];
+        headers.forEach(headerText => {
+            const th = document.createElement('th');
+            th.setAttribute('scope', 'col');
+            th.textContent = headerText;
+            headerRow.appendChild(th);
         });
-        resultHTML += `</ul><p>Total Ride Time: ${combination_time} minutes</p>`;
-        resultHTML += `<p>Total Ride Cost: Rp ${combination_cost} </p></li>`;
-    });
-    resultHTML += "</ul>";
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
     
+        // Body table
+        let totalWaktu = 0;
+        let totalHarga = 0;
+        bestCombination.forEach((item, index) => {
+            const tr = document.createElement('tr');
     
-    document.getElementById('results').innerHTML = resultHTML;
+            const tdNo = document.createElement('th');
+            tdNo.setAttribute('scope', 'row');
+            tdNo.textContent = index + 1;
+            tr.appendChild(tdNo);
+    
+            const tdNama = document.createElement('td');
+            tdNama.textContent = item.Wahana;
+            tr.appendChild(tdNama);
+    
+            const tdHarga = document.createElement('td');
+            const harga = isWeekend ? item.harga_weekend : item.harga_weekday;
+            tdHarga.textContent = harga;
+            totalHarga += harga;
+            tr.appendChild(tdHarga);
+    
+            const tdWaktu = document.createElement('td');
+            tdWaktu.textContent = item.waktu_bermain;
+            totalWaktu += item.waktu_bermain;
+            tr.appendChild(tdWaktu);
+    
+            const tdTinggi = document.createElement('td');
+            tdTinggi.textContent = item.tinggi_minimum;
+            tr.appendChild(tdTinggi);
+    
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+    
+        // Footer table
+        const footerRow = document.createElement('tr');
+        const tdTotalLabel = document.createElement('th');
+        tdTotalLabel.setAttribute('scope', 'row');
+        tdTotalLabel.textContent = 'TOTAL';
+        footerRow.appendChild(tdTotalLabel);
 
+        footerRow.appendChild(document.createElement('td'))
 
-}
+        
+        const tdTotalHarga = document.createElement('td');
+        tdTotalHarga.textContent = totalHarga;
+        footerRow.appendChild(tdTotalHarga);
+    
+        const tdTotalWaktu = document.createElement('td');
+        tdTotalWaktu.textContent = totalWaktu;
+        footerRow.appendChild(tdTotalWaktu);
+    
+        footerRow.appendChild(document.createElement('td'));
 
-function processFormHP() {
-    const nama = document.getElementById('nama-hp').value;
-    const email = document.getElementById('email-hp').value;
-    const tinggi = parseInt(document.getElementById('tinggi-hp').value);
-    const hari = document.getElementById('hari-hp').value;
-    const jam = parseInt(document.getElementById('jam-hp').value);
-    const menit = parseInt(document.getElementById('menit-hp').value);
-    const budget = parseInt(document.getElementById('budget-hp').value);
-
-    let isValid = true;
-
-    if (!nama) {
-        document.getElementById('nama-error-hp').style.display = 'block';
-        document.getElementById('nama-hp').classList.add('is-invalid');
-        isValid = false;
-    }else{
-        document.getElementById('nama-error-hp').style.display = 'none';
-        document.getElementById('nama-hp').classList.remove('is-invalid');
-    }
-
-    if (!email) {
-        document.getElementById('email-error-hp').style.display = 'block';
-        document.getElementById('email-hp').classList.add('is-invalid');
-        isValid = false;
+    
+        tfoot.appendChild(footerRow);
+        table.appendChild(tfoot);
+    
+        bestResultContainer.appendChild(table);
     } else {
-        document.getElementById('email-error-hp').style.display = 'none';
-        document.getElementById('email-hp').classList.remove('is-invalid');
+        bestResultContainer.innerHTML = '<p>Tidak ada kombinasi yang memenuhi kriteria.</p>';
     }
+}
 
-    if (isNaN(tinggi)) {
-        document.getElementById('tinggi-error-hp').style.display = 'block';
-        document.getElementById('tinggi-hp').classList.add('is-invalid');
-        isValid = false;
-    }else if(tinggi < 80){
-        document.getElementById('tinggi-error-hp').style.display = 'none';
-        document.getElementById('tinggi-hp').classList.remove('is-invalid');
-    }
+function AllBruteForce() {
+    const {nama, email, tinggi, hari, jam, menit, budget} = getInputData();
 
-    if (hari === 'Pilih Hari') {
-        document.getElementById('hari-error-hp').style.display = 'block';
-        document.getElementById('hari-hp').classList.add('is-invalid');
-        isValid = false;
-    }else{
-        document.getElementById('hari-error-hp').style.display = 'none';
-        document.getElementById('hari-hp').classList.remove('is-invalid');
-    }
-
-    if (isNaN(jam)) {
-        document.getElementById('jam-error-invalid-hp').style.display = 'block';
-        document.getElementById('jam-hp').classList.add('is-invalid');
-        isValid = false;
-    }else if (jam > 24){
-        document.getElementById('jam-error-kelebihan-hp').style.display = 'block';
-        document.getElementById('jam-hp').classList.add('is-invalid');
-        isValid = false;
-    }else{
-        document.getElementById('jam-error-invalid-hp').style.display = 'none';
-        document.getElementById('jam-error-kelebihan-hp').style.display = 'none';
-        document.getElementById('jam-hp').classList.remove('is-invalid');
-    }
-
-    if (isNaN(menit)) {
-        document.getElementById('menit-error-invalid-hp').style.display = 'block';
-        document.getElementById('menit-hp').classList.add('is-invalid');
-        isValid = false;
-    }else if (menit > 24){
-        document.getElementById('menit-error-kelebihan-hp').style.display = 'block';
-        document.getElementById('menit-hp').classList.add('is-invalid');
-        isValid = false;
-    }else{
-        document.getElementById('menit-error-invalid-hp').style.display = 'none';
-        document.getElementById('menit-error-kelebihan-hp').style.display = 'none';
-        document.getElementById('menit-hp').classList.remove('is-invalid');
-    }
-
-    if (isNaN(budget) || budget < 0) {
-        document.getElementById('budget-error-hp').style.display = 'block';
-        document.getElementById('budget-hp').classList.add('is-invalid');
-        isValid = false;
-    }else{
-        document.getElementById('budget-error-hp').style.display = 'none';
-        document.getElementById('budget-hp').classList.remove('is-invalid');
-    }
-
-
-
-    if (!isValid) {
+    if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
         return;
     }
 
-    const total_minutes = jam * 60 + menit;
-    const is_weekend = (hari === "Sabtu" || hari === "Minggu");
-    
-    let filteredDataset = dataset.filter(item => tinggi >= item.tinggi_minimum);
-    
-    let best_combination = [];
-    let max_ride_time = 0;
-    let total_ride_cost = 0;
-    let all_combinations = [];
-    
-    function findCombinations(current_combination, current_index, current_cost, current_time) {
-        if (current_cost > budget || current_time > total_minutes) {
+    const totalWaktuBermain = jam * 60 + menit;
+
+    const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
+
+    const MAX_COMBINATIONS_TO_DISPLAY = 10; // Max number of combinations to display
+
+    let allCombinations = [];
+
+    function findAllCombinations(index, currentBudget, currentWahana, currentWaktuBermain, currentCombination) {
+        if (currentBudget < 0 || currentWaktuBermain > totalWaktuBermain) {
             return;
         }
-        if (current_time > max_ride_time) {
-            max_ride_time = current_time;
-            best_combination = [...current_combination];
-            total_minutes = current_cost;
+        if (index >= dataset.length) {
+            allCombinations.push({
+                combination: currentCombination.slice(),
+                totalHarga: budget - currentBudget,
+                totalWaktu: currentWaktuBermain
+            });
+            return;
         }
-        
-        all_combinations.push([...current_combination]);
-
-        for (let i = current_index; i < filteredDataset.length; i++) {
-            let ride = filteredDataset[i];
-            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
-            findCombinations([...current_combination, ride], i + 1, current_cost + ride_cost, current_time + ride.waktu_bermain);
+        const item = dataset[index];
+        const harga = isWeekend ? item.harga_weekend : item.harga_weekday;
+        if (tinggi >= item.tinggi_minimum) {
+            findAllCombinations(
+                index + 1,
+                currentBudget - harga,
+                currentWahana + 1,
+                currentWaktuBermain + item.waktu_bermain,
+                [...currentCombination, item]
+            );
         }
+        findAllCombinations(index + 1, currentBudget, currentWahana, currentWaktuBermain, currentCombination);
     }
 
-    findCombinations([], 0, 0, 0);
-    
-    let resultHTML = `<h3>Algoritma BruteForce<br> Best Ride Combination for ${nama}</h3>`;
-    resultHTML += "<ul>";
-    best_combination.forEach(ride => {
-        resultHTML += `<li>${ride.Wahana} - ${is_weekend ? ride.harga_weekend : ride.harga_weekday} Rp - ${ride.waktu_bermain} minutes</li>`;
-    });
-    resultHTML += "</ul>";
-    resultHTML += `<p>Total Ride Time: ${max_ride_time} minutes</p>`;
-    resultHTML += `<p>Total Ride Cost: Rp ${total_ride_cost} </p>`;
+    findAllCombinations(0, budget, 0, 0, []);
 
-    resultHTML = `<h3>Algoritma BruteForce<br>All Combination for ${nama}</h3>`;
-    resultHTML += "<ul>";
-    all_combinations.forEach(combination => {
-        let combination_cost = 0;
-        let combination_time = 0;
-        resultHTML += "<li><ul>";
-        combination.forEach(ride => {
-            let ride_cost = is_weekend ? ride.harga_weekend : ride.harga_weekday;
-            resultHTML += `<li>${ride.Wahana} - ${ride_cost} Rp - ${ride.waktu_bermain} minutes</li>`;
-            combination_cost += ride_cost;
-            combination_time += ride.waktu_bermain;
-        });
-        resultHTML += `</ul><p>Total Ride Time: ${combination_time} minutes</p>`;
-        resultHTML += `<p>Total Ride Cost: Rp ${combination_cost} </p></li>`;
-    });
-    resultHTML += "</ul>";
-    
-    
-    document.getElementById('results').innerHTML = resultHTML;
+    // Menampilkan semua kemungkinan
+    const allResultContainer = document.getElementById('all-result-pc');
+    allResultContainer.innerHTML = '';
 
+    if (allCombinations.length > 0) {
+        document.getElementById('bruteFoce').classList.remove('invisible');
+        document.getElementById('all-result-pc').classList.add('text-center');
 
+        const numCombinationsToDisplay = Math.min(MAX_COMBINATIONS_TO_DISPLAY, allCombinations.length);
+
+        for (let i = 0; i < numCombinationsToDisplay; i++) {
+            const combination = allCombinations[i];
+            const div = document.createElement('div');
+            div.classList.add('mb-4');
+
+            const header = document.createElement('h4');
+            header.textContent = `Kombinasi ${i + 1}:`;
+            div.appendChild(header);
+
+            const table = document.createElement('table');
+            table.classList.add('table');
+
+            const thead = document.createElement('thead');
+            thead.classList.add('table-light');
+
+            const tbody = document.createElement('tbody');
+
+            const tfoot = document.createElement('tfoot');
+
+            // Header table
+            const headerRow = document.createElement('tr');
+            const headers = ['NO','Nama Wahana', 'Harga', 'Waktu Bermain', 'Tinggi Minimum'];
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.setAttribute('scope', 'col');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Body table
+            combination.combination.forEach((item, index) => {
+                const tr = document.createElement('tr');
+
+                const tdNo = document.createElement('th');
+                tdNo.setAttribute('scope', 'row');
+                tdNo.textContent = index + 1;
+                tr.appendChild(tdNo);
+
+                const tdNama = document.createElement('td');
+                tdNama.textContent = item.Wahana;
+                tr.appendChild(tdNama);
+
+                const tdHarga = document.createElement('td');
+                const harga = isWeekend ? item.harga_weekend : item.harga_weekday;
+                tdHarga.textContent = harga;
+                tr.appendChild(tdHarga);
+
+                const tdWaktu = document.createElement('td');
+                tdWaktu.textContent = item.waktu_bermain;
+                tr.appendChild(tdWaktu);
+
+                const tdTinggi = document.createElement('td');
+                tdTinggi.textContent = item.tinggi_minimum;
+                tr.appendChild(tdTinggi);
+
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+
+            // Footer table
+            const footerRow = document.createElement('tr');
+            const tdTotalLabel = document.createElement('th');
+            tdTotalLabel.setAttribute('scope', 'row');
+            tdTotalLabel.textContent = 'TOTAL';
+            footerRow.appendChild(tdTotalLabel);
+
+            footerRow.appendChild(document.createElement('td'))
+
+            const tdTotalHarga = document.createElement('td');
+            tdTotalHarga.textContent = combination.totalHarga;
+            footerRow.appendChild(tdTotalHarga);
+
+            const tdTotalWaktu = document.createElement('td');
+            tdTotalWaktu.textContent = combination.totalWaktu;
+            footerRow.appendChild(tdTotalWaktu);
+
+            footerRow.appendChild(document.createElement('td'));
+
+            tfoot.appendChild(footerRow);
+            table.appendChild(tfoot);
+
+            div.appendChild(table);
+            allResultContainer.appendChild(div);
+        }
+    } else {
+        allResultContainer.innerHTML = '<p>Tidak ada kombinasi yang memenuhi kriteria.</p>';
+    }
 }
+
