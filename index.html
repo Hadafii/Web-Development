@@ -312,18 +312,18 @@
 
       <!-- buat pc  -->
       <form id="contact-form">
-        <div class="container d-none d-lg-block">
+        <div class="container">
           <div class="row align-items-start">
-            <div class="col">
+            <div class="col-lg">
               <div class=" pt-5">
                 <h2><b>CONTACT DETAIL</b></h2>
-                <div class="text-secondary">
+                  <div class="text-secondary">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="nama" placeholder="Nama">
                         <label for="nama">Nama Pembeli</label>
-                        <div id="nama-error" class="invalid-feedback" style="display: none;">
-                          Masukin Namanya Dulu!
-                        </div>
+                          <div id="nama-error" class="invalid-feedback" style="display: none;">
+                            Masukin Namanya Dulu!
+                          </div>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -394,7 +394,6 @@
                               Budget kamu kurang!
                             </div>
                         </div>
-                        
                     </div>
                 </div>
                 <!-- button bruteforce  -->
@@ -413,9 +412,9 @@
                 </div>
                 
                 
-            </div>
-            </div>
-            <div class="col pt-5">
+                </div>
+              </div>
+            <div class="col-lg pt-5">
               <div id="bruteFoce" class="invisible">
                 <h2><b>KOMBINASI TERBAIK BERDASARKAN BRUTEFORCE:</b></h2>
                   <div id="best-result-pc">
@@ -441,103 +440,6 @@
         </div>
       </form>
 
-      <!-- buat hp  -->
-      <form id="contact-form">
-        <div class="container pt-5 d-block d-lg-none">
-            <h2><b>CONTACT DETAIL</b></h2>
-            <div class="text-secondary">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nama-hp" placeholder="Nama">
-                    <label for="nama">Nama Pembeli</label>
-                    <div id="nama-error-hp" class="invalid-feedback" style="display: none;">
-                      Masukin Namanya Dulu!
-                    </div>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email-hp" placeholder="name@example.com">
-                    <label for="email">Alamat Email</label>
-                    <div id="email-error-hp" class="invalid-feedback" style="display: none;">
-                      Emailnya Kelupaan Nih!
-                    </div>
-                </div>
-                
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="tinggi-hp" placeholder="Tinggi">
-                    <label for="tinggi">Tinggi Pembeli (cm)</label>
-                    <div id="tinggi-error-hp" class="invalid-feedback" style="display: none;">
-                      Tinggi Kamu ge memenuhi syarat!
-                    </div>
-                </div>
-                
-                <div class="pt-3" style="color: black;">
-                    <h2><b>BOOKED DETAIL</b></h2>
-                </div>
-                <div class="form-floating">
-                    <select class="form-select" id="hari-hp" aria-label="Floating label select example">
-                        <option selected>Pilih Hari</option>
-                        <option value="Senin">Senin</option>
-                        <option value="Selasa">Selasa</option>
-                        <option value="Rabu">Rabu</option>
-                        <option value="Kamis">Kamis</option>
-                        <option value="Jumat">Jumat</option>
-                        <option value="Sabtu">Sabtu</option>
-                        <option value="Minggu">Minggu</option>
-                    </select>
-                    <label for="hari">Works with selects</label>
-                    <div id="hari-error-hp" class="invalid-feedback" style="display: none;">
-                      Harinya belum kamu pilih!
-                    </div>
-                    <div class="row g-2 pt-3">
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="jam-hp" placeholder="Jam">
-                                <label for="jam">Input Jam (contoh: 1)</label>
-                                <div id="jam-error-kelebihan-hp" class="invalid-feedback" style="display: none;">
-                                  ini jam-nya ga kebanyakan?
-                                </div>
-                                <div id="jam-error-invalid-hp" class="invalid-feedback" style="display: none;">
-                                  jamnya gak valid nih!
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="menit-hp" placeholder="Menit">
-                                <label for="menit">Input Menit (contoh: 10)</label>
-                                <div id="menit-error-kelebihan-hp" class="invalid-feedback" style="display: none;">
-                                  ini menit-nya ga kebanyakan?
-                                </div>
-                                <div id="menit-error-invalid-hp" class="invalid-feedback" style="display: none;">
-                                  menit-nya gak valid nih!
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="budget-hp" placeholder="Budget">
-                        <label for="budget">Masukkan budget pembeli (contoh: 100000)</label>
-                        <div id="budget-error-hp" class="invalid-feedback" >
-                          Budget kamu kurang!
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button" onclick="processFormSolusiTerbaikHP()">Lihat Kombinasi Terbaik Dengan Brute Force!</button>
-            </div>
-            <div id="results"></div>
-            <div class="d-grid gap-2">
-              <button class="btn btn-primary" type="button" onclick="processFormSolusiTerbaikHP()" style="display: none;">Lihat Semua Solusi Dengan Brute Force!</button>
-          </div>
-          <div id="results"></div>
-            <div id="tombolBook" class="d-grid gap-2 pt-2">
-                <button class="btn btn-lg btn-primary" type="button" onclick="processFormHP()"  style="display: none;">Book Tiketnya Sekarang!</button>
-            </div>
-        </div>
-      </form>
     
     </section>
 

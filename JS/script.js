@@ -132,67 +132,71 @@ function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
 //fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button//fungsi button
 
 function BestBruteForce() {
-    const {nama, email, tinggi, hari, jam, menit, budget} = getInputData();
+    const { nama, email, tinggi, hari, jam, menit, budget } = getInputData();
 
     if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
         return;
     }
 
-    const totalWaktuBermain = jam * 60 + menit;
-
     const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
-
+    const totalMinutes = parseInt(jam) * 60 + parseInt(menit);
     let bestCombination = null;
-    let maxWahana = 0;
+    let totalCombinations = 0;
 
-    function findBestCombination(index, currentBudget, currentWahana, currentWaktuBermain, currentCombination) {
-        if (currentBudget < 0 || currentWaktuBermain > totalWaktuBermain) {
+    const startTime = performance.now();
+
+    function findCombinations(currentIndex, currentBudget, currentTime, currentCombination) {
+        totalCombinations++;
+
+        if (currentBudget <= 0 || currentTime <= 0 || currentIndex >= dataset.length) {
+            if (bestCombination === null || currentCombination.length > bestCombination.length) {
+                bestCombination = currentCombination.slice();
+            }
             return;
         }
-        if (currentWahana > maxWahana) {
-            maxWahana = currentWahana;
+
+        for (let i = currentIndex; i < dataset.length; i++) {
+            const wahana = dataset[i];
+            const harga = isWeekend ? wahana.harga_weekend : wahana.harga_weekday;
+
+            if (wahana.tinggi_minimum <= tinggi && harga <= currentBudget && wahana.waktu_bermain <= currentTime) {
+                currentCombination.push(wahana);
+                findCombinations(i + 1, currentBudget - harga, currentTime - wahana.waktu_bermain, currentCombination);
+                currentCombination.pop();
+            }
+        }
+
+        if (bestCombination === null || currentCombination.length > bestCombination.length) {
             bestCombination = currentCombination.slice();
         }
-        if (index >= dataset.length) {
-            return;
-        }
-        const item = dataset[index];
-        const harga = isWeekend ? item.harga_weekend : item.harga_weekday;
-        if (tinggi >= item.tinggi_minimum) {
-            findBestCombination(
-                index + 1,
-                currentBudget - harga,
-                currentWahana + 1,
-                currentWaktuBermain + item.waktu_bermain,
-                [...currentCombination, item]
-            );
-        }
-        findBestCombination(index + 1, currentBudget, currentWahana, currentWaktuBermain, currentCombination);
     }
 
-    findBestCombination(0, budget, 0, 0, []);
+    findCombinations(0, budget, totalMinutes, []);
 
-    // Menampilkan hasil terbaik
+    const endTime = performance.now();
+    const executionTime = endTime - startTime;
+
+    // Display the best combination
     const bestResultContainer = document.getElementById('best-result-pc');
     bestResultContainer.innerHTML = '';
 
-    if (bestCombination) {
+    if (bestCombination && bestCombination.length > 0) {
         document.getElementById('bruteFoce').classList.remove('invisible');
         document.getElementById('best-result-pc').classList.add('text-center');
 
         const table = document.createElement('table');
         table.classList.add('table');
-    
+
         const thead = document.createElement('thead');
         thead.classList.add('table-light');
-    
+
         const tbody = document.createElement('tbody');
-    
+
         const tfoot = document.createElement('tfoot');
-    
+
         // Header table
         const headerRow = document.createElement('tr');
-        const headers = ['NO','Nama Wahana', 'Harga', 'Waktu Bermain', 'Tinggi Minimum'];
+        const headers = ['NO', 'Nama Wahana', 'Harga', 'Waktu Bermain', 'Tinggi Minimum'];
         headers.forEach(headerText => {
             const th = document.createElement('th');
             th.setAttribute('scope', 'col');
@@ -201,41 +205,41 @@ function BestBruteForce() {
         });
         thead.appendChild(headerRow);
         table.appendChild(thead);
-    
+
         // Body table
         let totalWaktu = 0;
         let totalHarga = 0;
         bestCombination.forEach((item, index) => {
             const tr = document.createElement('tr');
-    
+
             const tdNo = document.createElement('th');
             tdNo.setAttribute('scope', 'row');
             tdNo.textContent = index + 1;
             tr.appendChild(tdNo);
-    
+
             const tdNama = document.createElement('td');
             tdNama.textContent = item.Wahana;
             tr.appendChild(tdNama);
-    
+
             const tdHarga = document.createElement('td');
             const harga = isWeekend ? item.harga_weekend : item.harga_weekday;
             tdHarga.textContent = harga;
             totalHarga += harga;
             tr.appendChild(tdHarga);
-    
+
             const tdWaktu = document.createElement('td');
             tdWaktu.textContent = item.waktu_bermain;
             totalWaktu += item.waktu_bermain;
             tr.appendChild(tdWaktu);
-    
+
             const tdTinggi = document.createElement('td');
             tdTinggi.textContent = item.tinggi_minimum;
             tr.appendChild(tdTinggi);
-    
+
             tbody.appendChild(tr);
         });
         table.appendChild(tbody);
-    
+
         // Footer table
         const footerRow = document.createElement('tr');
         const tdTotalLabel = document.createElement('th');
@@ -245,26 +249,35 @@ function BestBruteForce() {
 
         footerRow.appendChild(document.createElement('td'))
 
-        
         const tdTotalHarga = document.createElement('td');
         tdTotalHarga.textContent = totalHarga;
         footerRow.appendChild(tdTotalHarga);
-    
+
         const tdTotalWaktu = document.createElement('td');
         tdTotalWaktu.textContent = totalWaktu;
         footerRow.appendChild(tdTotalWaktu);
-    
+
         footerRow.appendChild(document.createElement('td'));
 
-    
         tfoot.appendChild(footerRow);
         table.appendChild(tfoot);
-    
+
         bestResultContainer.appendChild(table);
+
+        // Add execution stats
+        const stats = document.createElement('div');
+        stats.innerHTML = `
+            <p>Total waktu eksekusi: ${executionTime.toFixed(2)} ms</p>
+            <p>Total kombinasi yang memenuhi diperiksa: ${totalCombinations}</p>
+        `;
+        bestResultContainer.appendChild(stats);
     } else {
         bestResultContainer.innerHTML = '<p>Tidak ada kombinasi yang memenuhi kriteria.</p>';
     }
 }
+
+
+
 
 function AllBruteForce() {
     const {nama, email, tinggi, hari, jam, menit, budget} = getInputData();
