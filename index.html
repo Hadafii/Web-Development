@@ -396,58 +396,125 @@
                         </div>
                     </div>
                 </div>
-                <!-- button bruteforce  -->
+                <!-- button backtracking  -->
 
                 <div class="d-grid gap-2">
-                    <button id="BruteStandby" class="btn btn-lg btn-primary" type="button" onclick="BestBruteForce()" style="background-color: #8A19D6; border: none; display: block;" >Lihat Kombinasi Terbaik Brute Force!</button>
+                    <button id="BruteStandby" class="btn btn-lg btn-primary" type="button" onclick="BestBacktracking()" style="background-color: #8A19D6; border: none; display: block;" >Lihat Kombinasi Terbaik Backtracking!</button>
                     
-                    <button id="BruteLoad" class="btn btn-lg btn-primary" type="button" onclick="BestBruteForce()" style="background-color: #8A19D6; border: none; display: none;" disabled>
+                    <button id="BruteLoad" class="btn btn-lg btn-primary" type="button" onclick="BestBacktracking()" style="background-color: #8A19D6; border: none; display: none;" disabled>
                     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                     Loading...</button>
                 </div>
 
                 <!-- button greedy  -->
                 <div class="d-grid gap-2 pt-2">
-                  <button class="btn btn-lg btn-primary" type="button" onclick="BestGreedy()" style="background-color: #8A19D6; border: none;">Lihat Kombinasi Terbaik Greedy!</button>
+                  <button class="btn btn-lg btn-primary" type="button" onclick="bestCombinationGreedy()" style="background-color: #8A19D6; border: none;">Lihat Kombinasi Terbaik Greedy!</button>
                 </div>
                 
                 
                 </div>
               </div>
-            <div class="col-lg pt-5">
-              <div id="bruteFoce" class="invisible">
-                <h2><b>KOMBINASI TERBAIK BERDASARKAN BRUTEFORCE:</b></h2>
-                  <div id="best-result-pc">
+            <div class="col-lg">
+              <div id="RESULT" class="pt-5" style="display: none;">
+                  <div id="best-result">
 
                   </div>
 
-                <!-- ini yg hidden -->
-                <div id="tombolBook" class="d-grid gap-2 pt-2">
-                  <button class="btn btn-lg btn-primary" type="button" onclick="AllBruteForce()" style="background-color: #8A19D6; border: none;">Lihat Semua Kemungkinan!</button>
+                <!-- ini Tombol yg hidden -->
+                <div class="d-grid gap-2 pt-2">
+                  <button id="kemungkinanBacktrack" class="btn btn-lg btn-primary" type="button" onclick="AllBacktracking()" style="background-color: #8A19D6; border: none; display: none;">Lihat Beberapa Kemungkinannya!</button>
 
-                  <button class="btn btn-lg btn-primary" type="button" onclick="processFormPC()" style="background-color: #8A19D6; border: none;">Book Tiketnya Sekarang!</button>
+                  <button id="hasilGreedy" class="btn btn-lg btn-primary" type="button"  style="background-color: #8A19D6; border: none; display: none;" onclick="tampilkanSemuaGreedy(compareByHarga)">Lihat Semua Hasil Greedy!</button>
+
+                  <button id="tombolBook" class="btn btn-lg btn-primary" type="button" style="background-color: #8A19D6; border: none; display: none;">Book Tiketnya Sekarang!</button>
+
+                  
+
+
+              
                 </div>
-                
-                <!-- ini yg hidden -->
+                <!-- ini Tombol yg hidden -->
+                </div>
               </div>
             </div>
-            </div>
           </div>
-
-          <div class="container" id="all-result-pc">
-            
+          <div class="container pt-5 py-3 text-center" id="bagianresult" style="display: none;">
+            <div id="all-result"></div>
           </div>
+          
         </div>
       </form>
-
-    
     </section>
 
-
+    <!-- udah akhir nih -->
+  <div class="container py-5">
     
-
+  </div>
   </body>
   <footer>
-
+    <style>
+      body {
+            font-family: Arial, sans-serif;
+        }
+ 
+      footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #B66DFF;
+        color: white;
+        padding: 20px;
+      }
+        
+ 
+      .column {
+          width: 27%;
+      }
+ 
+      p {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+ 
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+ 
+      li {
+        margin-bottom: 5px;
+      }
+    </style>
+    <body>
+      <footer>
+          <div class="column">
+              <p>Muhammad Amer Hadafi Utomo</p>
+              <ul>
+                  <li>+62 812-8490-0989</li>
+                  <li>amerhadafi@student.telkomuniversity.ac.id</li>
+                  <li>hadafii_</li>
+              </ul>
+          </div>
+   
+          <div class="column">
+              <p>Raisa Lukman Hakim</p>
+              <ul>
+                  <li>+62 813-6420-8450</li>
+                  <li>raisalh@student.telkomuniversity.ac.id</li>
+                  <li>raisa.lh</li>
+              </ul>
+          </div>
+   
+          <div class="column">
+              <p>Necha Agmeyla Tama</p>
+              <ul>
+                  <li>Company-wise</li>
+                  <li>Topic-wise</li>
+                  <li>nechaagm</li>
+              </ul>
+          </div>
+      </footer>
+  </body>
   </footer>
 </html>
