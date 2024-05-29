@@ -229,6 +229,7 @@ function displayAllResults(results, executionTime, isWeekend) {
 
         // Add execution stats
         const stats = document.createElement('div');
+        stats.classList.add('pb-5');
         stats.innerHTML = `
             <p>Total waktu eksekusi: ${executionTime.toFixed(2)} ms</p>
             <p>Total kombinasi yang memenuhi diperiksa: ${result.combination.length}</p>
@@ -242,6 +243,8 @@ function displayResults(bestCombination, executionTime, totalCombinations, isWee
     bestResultContainer.innerHTML = '';
 
     if (bestCombination.length > 0) {
+        document.getElementById('bagianresult').style.display = 'block';
+
         const h2Title = document.createElement('h2');
         const bBold = document.createElement('b');
         bBold.setAttribute('id', 'method');
