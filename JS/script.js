@@ -605,7 +605,23 @@ function bestCombinationGreedy() {
     const byDensity = BestGreedy(compareByDensity);
 
     const allResults = [byWaktu, byHarga, byDensity];
-    const bestCombination = allResults.reduce((best, current) => (current.length > best.length ? current : best), []);
+
+    // Fungsi untuk menghitung total harga dan total waktu dari sebuah kombinasi
+    function calculateTotal(combination, key) {
+        return combination.reduce((total, item) => total + item[key], 0);
+    }
+
+    // Fungsi untuk menghitung rasio harga per waktu
+    function calculateRatio(combination) {
+        const totalHarga = calculateTotal(combination, 'harga');  // Sesuaikan dengan nama kunci harga pada objek
+        const totalWaktu = calculateTotal(combination, 'waktu');  // Sesuaikan dengan nama kunci waktu pada objek
+        return totalWaktu === 0 ? 0 : totalHarga / totalWaktu;
+    }
+
+    // Menentukan kombinasi dengan rasio harga per waktu terbesar
+    const bestCombination = allResults.reduce((best, current) => {
+        return calculateRatio(current) > calculateRatio(best) ? current : best;
+    }, []);
 
     const endTime = performance.now();
     const executionTime = endTime - startTime;
@@ -617,8 +633,6 @@ function bestCombinationGreedy() {
     document.getElementById('hasilGreedy').style.display='block';
     document.getElementById('tombolBook').style.display='block';
     document.getElementById('all-result').innerHTML = '';
-
-
 }
 
 // Function to display all greedy results
