@@ -73,9 +73,15 @@ function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
 
     if (!email) {
         document.getElementById('email-error').style.display = 'block';
+        document.getElementById('email-ga-@').style.display = 'none';
         document.getElementById('email').classList.add('is-invalid');
         isValid = false;
-    } else {
+    } else if (!email.includes('@')){
+        document.getElementById('email-ga-@').style.display = 'block';
+        document.getElementById('email-error').style.display = 'none';
+        document.getElementById('email').classList.add('is-invalid');
+        isValid = false;
+    }else {
         document.getElementById('email-error').style.display = 'none';
         document.getElementById('email').classList.remove('is-invalid');
     }
@@ -100,10 +106,12 @@ function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
 
     if (isNaN(jam)) {
         document.getElementById('jam-error-invalid').style.display = 'block';
+        document.getElementById('jam-error-kelebihan').style.display = 'none';
         document.getElementById('jam').classList.add('is-invalid');
         isValid = false;
     }else if (jam > 24){
         document.getElementById('jam-error-kelebihan').style.display = 'block';
+        document.getElementById('jam-error-invalid').style.display = 'none';
         document.getElementById('jam').classList.add('is-invalid');
         isValid = false;
     }else{
@@ -114,10 +122,12 @@ function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
 
     if (isNaN(menit)) {
         document.getElementById('menit-error-invalid').style.display = 'block';
+        document.getElementById('menit-error-kelebihan').style.display = 'none';
         document.getElementById('menit').classList.add('is-invalid');
         isValid = false;
     }else if (menit > 59){
         document.getElementById('menit-error-kelebihan').style.display = 'block';
+        document.getElementById('menit-error-invalid').style.display = 'none';
         document.getElementById('menit').classList.add('is-invalid');
         isValid = false;
     }else{
