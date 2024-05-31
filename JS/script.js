@@ -606,29 +606,75 @@ function BestGreedy(compareFunction) {
     //displayResults
 }
 
+function BestGreedyOutput(compareFunction) {
+    const { nama, email, tinggi, hari, jam, menit, budget } = getInputData();
+
+    if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
+        return null;
+    }
+
+    const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
+    const totalMinutes = jam * 60 + menit;
+    let availableBudget = budget;
+    let availableTime = totalMinutes;
+    let totalHarga = 0;
+    let totalWaktu = 0;
+
+    const sortedDataset = [...dataset].sort(compareFunction);
+    const selectedWahana = [];
+
+    for (const wahana of sortedDataset) {
+        const harga = isWeekend ? wahana.harga_weekend : wahana.harga_weekday;
+        if (wahana.tinggi_minimum <= tinggi && harga <= availableBudget && wahana.waktu_bermain <= availableTime) {
+            selectedWahana.push(wahana);
+            availableBudget -= harga;
+            availableTime -= wahana.waktu_bermain;
+            totalHarga += harga;
+            totalWaktu += wahana.waktu_bermain;
+        }
+    }
+
+    hasil = totalHarga/totalWaktu;
+    console.log(hasil);
+    return hasil;
+}
+
 // Function to compare and select the best greedy combination
 function bestCombinationGreedy() {
     const startTime = performance.now();
 
-    const byWaktu = BestGreedy(compareByWaktuBermain);
-    const byHarga = BestGreedy(compareByHarga);
-    const byDensity = BestGreedy(compareByDensity);
+    const byWaktu = BestGreedyOutput(compareByWaktuBermain);
+    const byHarga = BestGreedyOutput(compareByHarga);
+    const byDensity = BestGreedyOutput(compareByDensity);
 
+    if (byWaktu === null || byHarga === null || byDensity === null) {
+        console.error("Form is not valid. Please check the input.");
+        return;
+    }
     const allResults = [byWaktu, byHarga, byDensity];
-    const bestCombination = allResults.reduce((best, current) => (current.length > best.length ? current : best), []);
+
+    let max = Math.max(byWaktu, byHarga, byDensity);
+    let bestCombination;
+
+    if (max === byWaktu){
+        bestCombination = BestGreedy(compareByWaktuBermain);
+    } else if (max === byHarga){
+        bestCombination = BestGreedy(compareByHarga);
+    } else {
+        bestCombination = BestGreedy(compareByDensity);
+    }
 
     const endTime = performance.now();
     const executionTime = endTime - startTime;
     const totalCombinations = allResults.length;
 
-    displayResults(bestCombination, executionTime, totalCombinations, document.getElementById('hari').value === 'Sabtu' || document.getElementById('hari').value === 'Minggu', "GREEDY");
+    const isWeekend = document.getElementById('hari').value === 'Sabtu' || document.getElementById('hari').value === 'Minggu';
+    displayResults(bestCombination, executionTime, totalCombinations, isWeekend, "GREEDY");
 
-    document.getElementById('kemungkinanBacktrack').style.display='none';
-    document.getElementById('hasilGreedy').style.display='block';
-    document.getElementById('tombolBook').style.display='block';
+    document.getElementById('kemungkinanBacktrack').style.display = 'none';
+    document.getElementById('hasilGreedy').style.display = 'block';
+    document.getElementById('tombolBook').style.display = 'block';
     document.getElementById('all-result').innerHTML = '';
-
-
 }
 
 // Function to display all greedy results
