@@ -83,6 +83,7 @@ function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
         isValid = false;
     }else {
         document.getElementById('email-error').style.display = 'none';
+        document.getElementById('email-ga-@').style.display = 'none';
         document.getElementById('email').classList.remove('is-invalid');
     }
 
