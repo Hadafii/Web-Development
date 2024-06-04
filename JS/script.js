@@ -149,7 +149,7 @@ function checkFormValidity(nama, email, tinggi, hari, jam, menit, budget) {
     return isValid;
 }
 
-function displayAllResults(results, executionTime, isWeekend) {
+function displayAllResults(results, isWeekend) {
     const resultsContainer = document.getElementById('all-result');
     resultsContainer.innerHTML = '';
 
@@ -221,7 +221,7 @@ function displayAllResults(results, executionTime, isWeekend) {
         tdTotalLabel.textContent = 'TOTAL';
         footerRow.appendChild(tdTotalLabel);
 
-        footerRow.appendChild(document.createElement('td'))
+        footerRow.appendChild(document.createElement('td'));
 
         const tdTotalHarga = document.createElement('td');
         tdTotalHarga.textContent = totalHarga;
@@ -242,12 +242,14 @@ function displayAllResults(results, executionTime, isWeekend) {
         const stats = document.createElement('div');
         stats.classList.add('pb-5');
         stats.innerHTML = `
-            <p>Total waktu eksekusi: ${executionTime.toFixed(2)} ms</p>
+            <p>Total waktu eksekusi: ${result.executionTime.toFixed(2)} ms</p>
             <p>Total kombinasi yang memenuhi diperiksa: ${result.combination.length}</p>
         `;
         resultsContainer.appendChild(stats);
     });
 }
+
+
  
 function displayResults(bestCombination, executionTime, totalCombinations, isWeekend, method) {
     const bestResultContainer = document.getElementById('best-result');
@@ -563,90 +565,118 @@ function AllBacktracking() {
     }
 }
 
-// Compare functions
-function compareByWaktuBermain(a, b) {
-    return a.waktu_bermain - b.waktu_bermain;
-}
-
-function compareByHarga(a, b) {
-    return a.harga_weekday - b.harga_weekday;
-}
-
-function compareByDensity(a, b) {
-    const densityA = a.waktu_bermain / a.harga_weekday;
-    const densityB = b.waktu_bermain / b.harga_weekday;
-    return densityA - densityB;
-}
-
-// Greedy algorithm function
-function BestGreedy(compareFunction) {
+// Greedy
+function GreedyByHarga() {
     const { nama, email, tinggi, hari, jam, menit, budget } = getInputData();
 
     if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
-        return null;
+        return [];
     }
 
     const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
-    const totalMinutes = jam * 60 + menit;
-    let availableBudget = budget;
-    let availableTime = totalMinutes;
+    const totalMinutes = parseInt(jam) * 60 + parseInt(menit);
+    const sortedDataset = dataset.slice().sort((a, b) => isWeekend ? a.harga_weekend - b.harga_weekend : a.harga_weekday - b.harga_weekday);
+    let sisaBudget = budget;
+    let sisaWaktu = totalMinutes;
+    const combination = [];
 
-    const sortedDataset = [...dataset].sort(compareFunction);
-    const selectedWahana = [];
+    for (let i = 0; i < sortedDataset.length; i++) {
+        const wahanaSort = sortedDataset[i];
+        const waktu = parseInt(wahanaSort.waktu_bermain);
+        const harga = isWeekend ? wahanaSort.harga_weekend : wahanaSort.harga_weekday;
 
-    for (const wahana of sortedDataset) {
-        const harga = isWeekend ? wahana.harga_weekend : wahana.harga_weekday;
-        if (wahana.tinggi_minimum <= tinggi && harga <= availableBudget && wahana.waktu_bermain <= availableTime) {
-            selectedWahana.push(wahana);
-            availableBudget -= harga;
-            availableTime -= wahana.waktu_bermain;
+        if (sisaBudget >= harga) {
+            combination.push(wahanaSort);
+            if (wahanaSort.tinggi_minimum > tinggi || sisaWaktu < waktu){
+                combination.pop();
+                break;
+            }else{
+                sisaBudget -= harga;
+                sisaWaktu -= waktu;
+            }
         }
     }
 
-    return selectedWahana;
-    //displayResults
+    return combination;
 }
 
-function BestGreedyOutput(compareFunction) {
+function GreedyByWaktu() {
     const { nama, email, tinggi, hari, jam, menit, budget } = getInputData();
 
     if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
-        return null;
+        return [];
     }
 
     const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
-    const totalMinutes = jam * 60 + menit;
-    let availableBudget = budget;
-    let availableTime = totalMinutes;
-    let totalHarga = 0;
-    let totalWaktu = 0;
+    const totalMinutes = parseInt(jam) * 60 + parseInt(menit);
+    const sortedDataset = dataset.slice().sort((a, b) => a.waktu_bermain - b.waktu_bermain);
+    let sisaBudget = budget;
+    let sisaWaktu = totalMinutes;
+    const combination = [];
+    
+    console.log("Sorted dataset:");
+    console.table(sortedDataset);
 
-    const sortedDataset = [...dataset].sort(compareFunction);
-    const selectedWahana = [];
+    for (let i = 0; i < sortedDataset.length; i++) {
+        const wahanaSort = sortedDataset[i];
+        const waktu = parseInt(wahanaSort.waktu_bermain);
+        const harga = isWeekend ? wahanaSort.harga_weekend : wahanaSort.harga_weekday;
+        
 
-    for (const wahana of sortedDataset) {
-        const harga = isWeekend ? wahana.harga_weekend : wahana.harga_weekday;
-        if (wahana.tinggi_minimum <= tinggi && harga <= availableBudget && wahana.waktu_bermain <= availableTime) {
-            selectedWahana.push(wahana);
-            availableBudget -= harga;
-            availableTime -= wahana.waktu_bermain;
-            totalHarga += harga;
-            totalWaktu += wahana.waktu_bermain;
+        if (sisaWaktu >= waktu) {
+            combination.push(wahanaSort);
+            if (wahanaSort.tinggi_minimum > tinggi || sisaBudget < harga){
+                combination.pop();
+                break;
+            }else{
+                sisaBudget -= harga;
+                sisaWaktu -= waktu;
+                console.log("Current combination:");
+                console.table(combination);
+            }
         }
     }
 
-    hasil = totalHarga/totalWaktu;
-    console.log(hasil);
-    return hasil;
+    return combination;
 }
 
-// Function to compare and select the best greedy combination
+
+function GreedyByDensity() {
+    const { nama, email, tinggi, hari, jam, menit, budget } = getInputData();
+
+    if (!checkFormValidity(nama, email, tinggi, hari, jam, menit, budget)) {
+        return [];
+    }
+
+    const isWeekend = (hari === 'Sabtu' || hari === 'Minggu');
+    const totalMinutes = parseInt(jam) * 60 + parseInt(menit);
+    const sortedDataset = dataset.slice().sort((a, b) => {
+        const densityA = a.waktu_bermain / (isWeekend ? a.harga_weekend : a.harga_weekday);
+        const densityB = b.waktu_bermain / (isWeekend ? b.harga_weekend : b.harga_weekday);
+        return densityA - densityB; // Higher density first
+    });
+    let currentBudget = budget;
+    let currentTime = totalMinutes;
+    const combination = [];
+
+    for (const wahana of sortedDataset) {
+        const harga = isWeekend ? wahana.harga_weekend : wahana.harga_weekday;
+        if (wahana.tinggi_minimum <= tinggi && harga <= currentBudget && wahana.waktu_bermain <= currentTime) {
+            combination.push(wahana);
+            currentBudget -= harga;
+            currentTime -= wahana.waktu_bermain;
+        }
+    }
+
+    return combination;
+}
+
 function bestCombinationGreedy() {
     const startTime = performance.now();
 
-    const byWaktu = BestGreedyOutput(compareByWaktuBermain);
-    const byHarga = BestGreedyOutput(compareByHarga);
-    const byDensity = BestGreedyOutput(compareByDensity);
+    const byHarga = GreedyByHarga();
+    const byWaktu = GreedyByWaktu();
+    const byDensity = GreedyByDensity();
 
     if (byWaktu === null || byHarga === null || byDensity === null) {
         console.error("Form is not valid. Please check the input.");
@@ -658,11 +688,11 @@ function bestCombinationGreedy() {
     let bestCombination;
 
     if (max === byWaktu){
-        bestCombination = BestGreedy(compareByWaktuBermain);
+        bestCombination = GreedyByWaktu();
     } else if (max === byHarga){
-        bestCombination = BestGreedy(compareByHarga);
+        bestCombination = GreedyByHarga();
     } else {
-        bestCombination = BestGreedy(compareByDensity);
+        bestCombination = GreedyByDensity();
     }
 
     const endTime = performance.now();
@@ -678,24 +708,33 @@ function bestCombinationGreedy() {
     document.getElementById('all-result').innerHTML = '';
 }
 
-// Function to display all greedy results
 function tampilkanSemuaGreedy() {
-    const startTime = performance.now();
-
-    const byWaktu = BestGreedy(compareByWaktuBermain);
-    const byHarga = BestGreedy(compareByHarga);
-    const byDensity = BestGreedy(compareByDensity);
-
-    const endTime = performance.now();
-    const executionTime = endTime - startTime;
-
     const isWeekend = document.getElementById('hari').value === 'Sabtu' || document.getElementById('hari').value === 'Minggu';
 
+    // Greedy by Harga
+    let startTime = performance.now();
+    const byHarga = GreedyByHarga();
+    let endTime = performance.now();
+    const executionTimeHarga = endTime - startTime;
+
+    // Greedy by Waktu Bermain
+    startTime = performance.now();
+    const byWaktu = GreedyByWaktu();
+    endTime = performance.now();
+    const executionTimeWaktu = endTime - startTime;
+
+    // Greedy by Density
+    startTime = performance.now();
+    const byDensity = GreedyByDensity();
+    endTime = performance.now();
+    const executionTimeDensity = endTime - startTime;
+
+    // Display all results
     displayAllResults([
-        { combination: byWaktu, method: "Waktu Bermain" },
-        { combination: byHarga, method: "Harga" },
-        { combination: byDensity, method: "Density" }
-    ], executionTime, isWeekend);
+        { combination: byHarga, method: "Harga", executionTime: executionTimeHarga },
+        { combination: byWaktu, method: "Waktu Bermain", executionTime: executionTimeWaktu },
+        { combination: byDensity, method: "Density", executionTime: executionTimeDensity }
+    ], isWeekend);
 }
 
 
